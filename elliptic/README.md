@@ -84,7 +84,7 @@ $ xxd alicePriBobPub.key
 
 As you can see, the derived value is 32 bytes.
 
-She can now use this key with a symmetric algorithm like [AES](../aes/README.md) to encrypt her message, producing symetrically encrypted ciphertext.
+She can now use this key with a symmetric algorithm like [AES](../aes/) to encrypt her message, producing symetrically encrypted ciphertext.
 
 She can now send this ciphertext, along with her public key, to Bob over an open channel, which Eve can read. The state now looks like:
 
