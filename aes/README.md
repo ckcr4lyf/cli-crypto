@@ -25,8 +25,8 @@ Inspecting ciphertext:
 
 ```
 $ xxd ciphertext.enc
-00000000: 7a37 2327 73b4 f5f8 03a9 5fac bd05 a4eb  z7#'s....._.....
-00000010: 32f2 474d e1db c03e 4a48 b46e faa2 94a6  2.GM...>JH.n....
+00000000: 2a4e beb2 9fac bc5b f814 6743 b4bd 0ae0  *N.....[..gC....
+00000010: bed0 2025 95f3 aa67 c28e 8398 6417 575e  .. %...g....d.W^
 ```
 
 Decrypting file
