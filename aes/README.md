@@ -5,8 +5,8 @@ Symmetric encryption
 Gen a 256 bit key & 128bit IV
 
 ```
-$ head -c 32 /dev/urandom | sha256sum | head -c 64 > aes.key
-$ head -c 16 /dev/urandom | sha256sum | head -c 32 > aes.iv
+$ openssl rand -hex 32 > aes.key
+$ openssl rand -hex 16 > aes.iv
 ```
 
 Prepare file to encrypt
