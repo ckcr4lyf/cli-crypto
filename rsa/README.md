@@ -22,3 +22,9 @@ $ openssl genpkey -algorithm RSA -out alice_private.pem -pkeyopt rsa_keygen_bits
 $ openssl rsa -in alice_private.pem -pubout -out alice_public.pem
 ```
 
+Generating Bob's keys:
+
+```
+$ openssl genpkey -algorithm RSA -out bob_private.pem -pkeyopt rsa_keygen_bits:2048
+$ openssl rsa -in bob_private.pem -pubout -out bob_public.pem
+```
