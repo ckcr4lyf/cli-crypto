@@ -67,3 +67,18 @@ $ xxd encrypted_to_bob.bin
 000000e0: fe78 3349 0310 c95d 7948 632c 3622 3de3  .x3I...]yHc,6"=.
 000000f0: 2cd8 8ac1 abc4 f5c5 66fc 6120 eebe c47b  ,.......f.a ...{
 ```
+
+## Decryption
+
+We will now decrypt it as if we were bob
+
+```
+$ openssl pkeyutl -decrypt -in encrypted_to_bob.bin -inkey bob_private.pem -pkeyopt rsa_padding_mode:pkcs1 -out decrypted_by_bob.txt
+$ sha256sum decrypted_by_bob.txt 
+a7481ba2300a76b58f659d2078d3468c5c570e2060d2d41f38ace0da008b431a  decrypted_by_bob.txt
+$ xxd decrypted_by_bob.txt 
+00000000: 8822 9fb2 f625 2968 6605 cbda fafb 4b91  ."...%)hf.....K.
+00000010: 7098 b639 a884 ae43 35f1 6927 b42a 5dfc  p..9...C5.i'.*].
+```
+
+This is the same as the original plaintext!
