@@ -29,6 +29,13 @@ $ openssl genpkey -algorithm RSA -out bob_private.pem -pkeyopt rsa_keygen_bits:2
 $ openssl rsa -in bob_private.pem -pubout -out bob_public.pem
 ```
 
+For our adversary, we will use Eve. Generating Eve's keys:
+
+```
+$ openssl genpkey -algorithm RSA -out eve_private.pem -pkeyopt rsa_keygen_bits:2048
+$ openssl rsa -in eve_private.pem -pubout -out eve_public.pem
+```
+
 
 ## Encryption
 
