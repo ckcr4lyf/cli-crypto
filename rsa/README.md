@@ -82,3 +82,42 @@ $ xxd decrypted_by_bob.txt
 ```
 
 This is the same as the original plaintext!
+
+
+## Signing
+
+Signing helps verify, for instance if Alice is sending a message to Bob, that it is really Alice who sent it.
+
+We will sign the existing plaintext file.
+
+```
+$ openssl pkeyutl -sign -inkey alice_private.pem -in plaintext.bin -out plaintext.sig
+$ xxd plaintext.sig 
+00000000: 3ef3 0ffd 9c8b efb0 2de5 5c06 a183 0d81  >.......-.\.....
+00000010: 776b 3508 93dc 6eec c9fa 1956 3c62 69a4  wk5...n....V<bi.
+00000020: 0187 7809 c214 feea dc3c 955e 8998 d9cc  ..x......<.^....
+00000030: 4d3b 685f abe9 fa7f abf7 0bf0 3bd1 426c  M;h_........;.Bl
+00000040: 22c3 b097 ecd0 4ea0 4821 23bd ba9d e971  ".....N.H!#....q
+00000050: bb27 5c90 44bb e514 1a00 1811 f08f 2b7f  .'\.D.........+.
+00000060: 768d aa0c bc8a c83a a707 73c4 d748 ab15  v......:..s..H..
+00000070: a674 c055 07d5 f0c0 1df7 05cc db42 9ae4  .t.U.........B..
+00000080: 29c0 bef5 e57e 2a7f f914 12eb 3d50 78b4  )....~*.....=Px.
+00000090: de8c 6ccc 139d b95e 458c 7112 9a8d 45d7  ..l....^E.q...E.
+000000a0: 16bb 7d09 659d d88d c2e2 0bf9 3dac 1552  ..}.e.......=..R
+000000b0: 77c8 b421 87c1 56b1 609d c3a6 cd51 05eb  w..!..V.`....Q..
+000000c0: fac7 319f f617 8103 7df8 f30c bede 3902  ..1.....}.....9.
+000000d0: d041 9ba0 2e08 90fb 308e 5a15 3e38 366a  .A......0.Z.>86j
+000000e0: 41b8 1880 32e2 9270 8c2f c123 a72f 015b  A...2..p./.#./.[
+000000f0: a178 0835 c9e0 267a b098 ece4 78c2 415b  .x.5..&z....x.A[
+```
+
+## Verification
+
+We now have a signature from Alice for the plaintext.
+
+Bob can verify this signature using Alice's public key:
+
+```
+$ openssl pkeyutl -verify -inkey alice_public.pem -pubin -in plaintext.bin -sigfile plaintext.sig 
+Signature Verified Successfully
+```
